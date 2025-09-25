@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import React from "react";
-import { Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MenuItem, useMenu } from "../src/context/MenuContext";
 
 export default function HomeScreen() {
@@ -44,13 +44,19 @@ export default function HomeScreen() {
 
       <Text style={styles.total}>Total items: {menu.length}</Text>
 
-      <View style={styles.buttonRow}>
-        <Button title="Add Menu Item" onPress={() => router.push("/add-item")} />
-        <Button title="Filter Menu" onPress={() => router.push("/filter")} />
+     <View style={styles.buttonRow}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/add-item")}>
+          <Text style={styles.buttonText}>Add Menu Item</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.button, styles.secondary]} onPress={() => router.push("/filter")}>
+          <Text style={styles.buttonText}>Filter Menu</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 18, paddingTop: 30 },
@@ -69,5 +75,30 @@ const styles = StyleSheet.create({
   desc: { marginTop: 6, color: "#444" },
   removeText: { color: "crimson", marginLeft: 10 },
   total: { marginTop: 8, fontWeight: "600", textAlign: "center" },
-  buttonRow: { flexDirection: "row", justifyContent: "space-around", marginTop: 14 },
+  // ✅ Buttons
+  buttonRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 14,
+  },
+
+  button: {
+    backgroundColor: "#D7903F",  //  button background color
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 35,            //  corner roundness
+    alignItems: "center",
+    minWidth: 120,
+  },
+
+  secondary: {
+    backgroundColor: "#D7903F",  //second button color
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontWeight: "600",
+    textAlign: "center",
+  },
 });
+
