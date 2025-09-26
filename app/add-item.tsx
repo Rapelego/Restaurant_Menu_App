@@ -1,7 +1,7 @@
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, Button, StyleSheet, Text, TextInput, View,TouchableOpacity, } from "react-native";
 import { useMenu } from "../src/context/MenuContext";
 
 export default function AddItemScreen() {
@@ -40,7 +40,10 @@ export default function AddItemScreen() {
       <Text>Price (R)</Text>
       <TextInput style={styles.input} value={price} onChangeText={setPrice} keyboardType="numeric" />
 
-      <Button title="Save Item" onPress={save} />
+      <TouchableOpacity style={styles.button} onPress={save}>
+  <Text style={styles.buttonText}>Save Item</Text>
+</TouchableOpacity>
+
     </View>
   );
 }
@@ -49,3 +52,18 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
   input: { borderWidth: 1, borderColor: "#ccc", padding: 8, marginBottom: 12, borderRadius: 6 },
 });
+button: {
+  backgroundColor: "#D7903F",  // button background color
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderRadius: 35,            // corner roundness
+  alignItems: "center",
+  minWidth: 120,
+  marginTop: 12,
+},
+
+buttonText: {
+  color: "#fff",
+  fontWeight: "600",
+  textAlign: "center",
+},
