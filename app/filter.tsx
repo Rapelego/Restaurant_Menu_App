@@ -1,6 +1,6 @@
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useMenu } from "../src/context/MenuContext";
 
 export default function FilterScreen() {
@@ -18,6 +18,11 @@ export default function FilterScreen() {
         <Picker.Item label="Main" value="Main" />
         <Picker.Item label="Dessert" value="Dessert" />
       </Picker>
+
+      {/*Reset Filter button */}
+      <TouchableOpacity style={styles.button} onPress={() => setFilter("All")}>
+        <Text style={styles.buttonText}>Reset Filter</Text>
+      </TouchableOpacity>
 
       <FlatList
         data={filtered}
