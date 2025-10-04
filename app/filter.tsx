@@ -42,7 +42,23 @@ export default function FilterScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
   title: { fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
-  input: { borderWidth: 1, borderColor: "#ccc", marginBottom: 12 },
+  input: { borderWidth: 1, borderColor: "#ccc", marginBottom: 12, borderRadius: 6 },
   item: { padding: 10, backgroundColor: "#eee", marginBottom: 6, borderRadius: 6 },
   dish: { fontWeight: "600" },
+
+  // Consistent button
+  button: {
+    backgroundColor: "#D7903F",  //  button color
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 35,            //  roundness
+    alignItems: "center",
+    minWidth: 120,
+    marginBottom: 12,
+  },
+  buttonText: {
+    color: "#fff",               //  text color
+    fontWeight: "600",
+    textAlign: "center",
+  },
 });
