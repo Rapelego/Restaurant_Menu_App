@@ -3,7 +3,6 @@ import React from "react";
 // the import path for MenuContext
 import { MenuProvider } from "../src/context/MenuContext";
 
-
 export default function Layout() {
   return (
     <MenuProvider>

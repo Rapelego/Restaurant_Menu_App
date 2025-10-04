@@ -1,6 +1,13 @@
 import { useRouter } from "expo-router";
 import React from "react";
-import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { MenuItem, useMenu } from "../src/context/MenuContext";
 
 export default function HomeScreen() {
@@ -11,7 +18,11 @@ export default function HomeScreen() {
   const handleRemove = (item: MenuItem) => {
     Alert.alert("Remove item", `Remove "${item.dish}"?`, [
       { text: "Cancel", style: "cancel" },
-      { text: "Remove", style: "destructive", onPress: () => removeItem(item.id) },
+      {
+        text: "Remove",
+        style: "destructive",
+        onPress: () => removeItem(item.id),
+      },
     ]);
   };
 
@@ -20,8 +31,12 @@ export default function HomeScreen() {
     <View style={styles.item}>
       <View style={{ flex: 1 }}>
         <Text style={styles.dish}>{item.dish}</Text>
-        <Text style={styles.meta}>{item.course} • R{item.price}</Text>
-        {item.description ? <Text style={styles.desc}>{item.description}</Text> : null}
+        <Text style={styles.meta}>
+          {item.course} • R{item.price}
+        </Text>
+        {item.description ? (
+          <Text style={styles.desc}>{item.description}</Text>
+        ) : null}
       </View>
       <TouchableOpacity onPress={() => handleRemove(item)}>
         <Text style={styles.removeText}>Remove</Text>
@@ -31,25 +46,33 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Chef Christoffel Menu</Text>
+      <Text style={styles.title}>Chef Christoffel's Menu</Text>
 
       <FlatList
         data={menu}
         keyExtractor={(i) => i.id}
         renderItem={renderItem}
         ListEmptyComponent={
-          <Text style={{ textAlign: "center", marginTop: 20 }}>No menu items yet.</Text>
+          <Text style={{ textAlign: "center", marginTop: 20 }}>
+            No menu items yet.
+          </Text>
         }
       />
 
       <Text style={styles.total}>Total items: {menu.length}</Text>
 
-     <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.button} onPress={() => router.push("/add-item")}>
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/add-item")}
+        >
           <Text style={styles.buttonText}>Add Menu Item</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.secondary]} onPress={() => router.push("/filter")}>
+        <TouchableOpacity
+          style={[styles.button, styles.secondary]}
+          onPress={() => router.push("/filter")}
+        >
           <Text style={styles.buttonText}>Filter Menu</Text>
         </TouchableOpacity>
       </View>
@@ -57,10 +80,14 @@ export default function HomeScreen() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 18, paddingTop: 30 },
-  title: { fontSize: 20, fontWeight: "700", marginBottom: 12, textAlign: "center" },
+  title: {
+    fontSize: 20,
+    fontWeight: "700",
+    marginBottom: 12,
+    textAlign: "center",
+  },
   item: {
     flexDirection: "row",
     padding: 12,
@@ -75,7 +102,7 @@ const styles = StyleSheet.create({
   desc: { marginTop: 6, color: "#444" },
   removeText: { color: "crimson", marginLeft: 10 },
   total: { marginTop: 8, fontWeight: "600", textAlign: "center" },
-  // ✅ Buttons
+  //  Buttons
   buttonRow: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -83,16 +110,16 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#D7903F",  //  button background color
+    backgroundColor: "#D7903F", //  button background color
     paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 35,            //  corner roundness
+    borderRadius: 35, //  corner roundness
     alignItems: "center",
     minWidth: 120,
   },
 
   secondary: {
-    backgroundColor: "#D7903F",  //second button color
+    backgroundColor: "#D7903F", //second button color
   },
 
   buttonText: {
@@ -101,4 +128,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
