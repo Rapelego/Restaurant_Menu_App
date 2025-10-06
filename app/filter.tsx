@@ -2,10 +2,11 @@ import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import {
   FlatList,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { useMenu } from "../src/context/MenuContext";
 
@@ -19,6 +20,18 @@ export default function FilterScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Filter Menu</Text>
+       <View style={styles.imageRow}>
+        <Image
+          source={require("../assets/images/salads.jpg")} //  Image 1
+          style={styles.image}
+          resizeMode="cover"
+        />
+        <Image
+          source={require("../assets/images/soup.jpg")} //  Image 2
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
       <Picker
         selectedValue={filter}
         onValueChange={setFilter}
@@ -59,6 +72,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     textAlign: "center",
+  },
+   imageRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 15,
+  },
+  image: {
+    width: "48%",  // two images side by side
+    height: 120,
+    borderRadius: 15,
   },
   input: {
     borderWidth: 1,
