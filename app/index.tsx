@@ -3,10 +3,11 @@ import React from "react";
 import {
   Alert,
   FlatList,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { MenuItem, useMenu } from "../src/context/MenuContext";
 
@@ -47,7 +48,11 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Chef Christoffel's Menu</Text>
-
+       <Image
+        source={require("../assets/images/Spaghetti.jpg")}
+        style={styles.headerImage}
+        resizeMode="cover"
+      />
       <FlatList
         data={menu}
         keyExtractor={(i) => i.id}
@@ -88,6 +93,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     textAlign: "center",
   },
+
+ headerImage: {
+    width: "100%",
+    height: 200,
+    borderRadius: 20,
+    marginBottom: 15,
+    alignSelf: "center",
+  },
+
   item: {
     flexDirection: "row",
     padding: 12,
@@ -97,6 +111,7 @@ const styles = StyleSheet.create({
     elevation: 1,
     alignItems: "center",
   },
+
   dish: { fontSize: 16, fontWeight: "600" },
   meta: { color: "#666", marginTop: 4 },
   desc: { marginTop: 6, color: "#444" },
